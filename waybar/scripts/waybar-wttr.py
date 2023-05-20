@@ -2,10 +2,31 @@
 
 import json
 import requests
+import argparse
 from datetime import datetime
 
+def init_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+            prog="waybar-wttr",
+            description="Waybar Weather Addon using wttr.in",
+            epilog="Special thanks to SolDoesTech!")
+
+    parser.add_argument(
+            '-f',
+            '--format',
+            choices=['C', 'F', 'c', 'f',
+                     'celcius', 'fahrenheit', 'Fahrenheit', 'Celcius'],
+            action="store",
+            default='F',
+            dest='temp_format',
+            help='Sets the Temperature Format Accordently')
+    return parser
+
+
+parser = init_parser()
+args = parser.parse_args()
 # TEMP_FORMAT can be either C or F
-TEMP_FORMAT = 'C'.upper()
+TEMP_FORMAT = args.temp_format[0].upper()
 
 # sets the keys for the other request
 FEELS_LIKE_KEY = f'FeelsLike{TEMP_FORMAT}'
