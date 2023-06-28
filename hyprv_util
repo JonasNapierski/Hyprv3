@@ -26,7 +26,7 @@ set_current_background() {
     if [[ $THEMEIS == "dark.css" ]]; then
         swww img ~/.config/HyprV/backgrounds/$VER'-background-dark.jpg'
     else
-        swww img ~/.config/HyprV/backgrounds/$VER'-background.jpg'
+        swww img ~/.config/HyprV/backgrounds/$VER'-background.png'
     fi
 }
 
